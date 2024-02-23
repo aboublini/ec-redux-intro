@@ -1,5 +1,3 @@
-import rootReducer from ".";
-
 const initialState = {
   tasks: [],
 };
@@ -9,7 +7,7 @@ const taskReducer = (state = initialState, action) => {
     case "ADD_TASK":
       return {
         ...state,
-        tasks: [...state, action.payload],
+        tasks: [...state.tasks, action.payload],
       };
     case "DELETE_TASK":
       return {
@@ -21,4 +19,4 @@ const taskReducer = (state = initialState, action) => {
   }
 };
 
-export default rootReducer;
+export default taskReducer;
