@@ -1,10 +1,12 @@
-import { configureStore } from "@reduxjs/toolkit";
-import todoReducer from "./reducers/taskReducer";
+import { createStore, applyMiddleware } from "redux";
+import { thunk } from "redux-thunk";
+import { composeWithDevTools } from "@redux-devtools/extension";
 
-const store = configureStore({
-  reducer: {
-    todo: todoReducer,
-  },
-});
+import taskReducer from "./reducers/taskReducer";
+
+const store = createStore(
+  taskReducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
 export default store;
